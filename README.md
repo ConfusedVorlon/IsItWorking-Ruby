@@ -20,6 +20,11 @@ Or install it yourself as:
 
     $ gem install is_it_working
 
+## Create a Checkin at Is It Working
+
+Log in to Is It Working and create a 'Checkin'.
+Click on the 'Use' button to get your CHECKIN_IDENTIFIER
+
 ## Usage
 
 Send a simple checkin with
@@ -43,6 +48,7 @@ IsItWorking::Checkin.time(key:"CHECKIN_IDENTIFIER",message:"Is It Slow?", bounda
 
 end
 ```
+If your code takes longer than 1000 milliseconds to run, then that will trigger an error and IsItWorking will let you know.
 
 See the full api details at https://isitworking.info/docs/checkin_api
 
@@ -51,9 +57,9 @@ See the full api details at https://isitworking.info/docs/checkin_api
 you can disable http calls with
 
 ```ruby
-  	IsItWorking.configure do |config|
-	  config.testing = true
-	end
+IsItWorking.configure do |config|
+	config.testing = true
+end
 ```
 
 in Rails, you can disable for testing and development by adding an initialiser 
