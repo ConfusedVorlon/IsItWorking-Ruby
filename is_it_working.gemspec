@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Simple wrapper to monitor background task running and duration with IsItWorking.info}
   spec.description   = %q{IsItWorking.info provides a service to monitor scripts. This wrapper provides simple methods to time scritps, or to report succesful running}
-  spec.homepage      = "https://IsItWorking.info"
+  spec.homepage      = "https://github.com/ConfusedVorlon/IsItWorking-Ruby"
   spec.license       = "MIT"
 
 
