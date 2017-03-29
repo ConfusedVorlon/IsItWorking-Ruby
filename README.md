@@ -22,13 +22,51 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Send a simple checkin with
 
-## Development
+```ruby
+IsItWorking::Checkin.ping(key:"CHECKIN_IDENTIFIER")
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Send more info with optional methods:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+IsItWorking::Checkin.ping(key:"CHECKIN_IDENTIFIER",message:"Your Info",status:0,time:123, boundary:1000)
+```
+
+Time your code with:
+
+```ruby
+IsItWorking::Checkin.time(key:"CHECKIN_IDENTIFIER",message:"Is It Slow?", boundary:1000) do
+
+	#Your Code Here
+
+end
+```
+
+See the full api details at https://isitworking.info/docs/checkin_api
+
+## Configuration
+
+you can disable http calls with
+
+```ruby
+  	IsItWorking.configure do |config|
+	  config.testing = true
+	end
+```
+
+in Rails, you can disable for testing and development by adding an initialiser 
+
+`/config/initializers/is_it_working.rb`
+
+```ruby
+
+IsItWorking.configure do |config|
+	config.testing = Rails.env.test? || Rails.env.development?
+end
+```
+
 
 ## Contributing
 
