@@ -1,7 +1,7 @@
-require "is_it_working/version"
+require "is_it_working_info/version"
 require 'benchmark'
 
-module IsItWorking
+module IsItWorkingInfo
 
 	##
 	# This class provides a wrapper for checking in with https://IsItWorking.info
@@ -31,7 +31,7 @@ module IsItWorking
 			s: status
 			}
 
-			if IsItWorking.configuration.testing
+			if IsItWorkingInfo.configuration.testing
 				puts "IsItWorking testing. Would call: #{checkin.uri.to_s}"
 			else
 				checkin.result = Net::HTTP.post_form(checkin.uri,checkin.params)

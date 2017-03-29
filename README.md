@@ -30,19 +30,19 @@ Click on the 'Use' button to get your CHECKIN_IDENTIFIER
 Send a simple checkin with
 
 ```ruby
-IsItWorking::Checkin.ping(key:"CHECKIN_IDENTIFIER")
+IsItWorkingInfo::Checkin.ping(key:"CHECKIN_IDENTIFIER")
 ```
 
 Send more info with optional methods:
 
 ```ruby
-IsItWorking::Checkin.ping(key:"CHECKIN_IDENTIFIER",message:"Your Info",status:0,time:123, boundary:1000)
+IsItWorkingInfo::Checkin.ping(key:"CHECKIN_IDENTIFIER",message:"Your Info",status:0,time:123, boundary:1000)
 ```
 
 Time your code with:
 
 ```ruby
-IsItWorking::Checkin.time(key:"CHECKIN_IDENTIFIER",message:"Is It Slow?", boundary:1000) do
+IsItWorkingInfo::Checkin.time(key:"CHECKIN_IDENTIFIER",message:"Is It Slow?", boundary:1000) do
 
 	#Your Code Here
 
@@ -57,18 +57,18 @@ See the full api details at https://isitworking.info/docs/checkin_api
 you can disable http calls with
 
 ```ruby
-IsItWorking.configure do |config|
+IsItWorkingInfo.configure do |config|
 	config.testing = true
 end
 ```
 
 in Rails, you can disable for testing and development by adding an initialiser 
 
-`/config/initializers/is_it_working.rb`
+`/config/initializers/is_it_working_info.rb`
 
 ```ruby
 
-IsItWorking.configure do |config|
+IsItWorkingInfo.configure do |config|
 	config.testing = Rails.env.test? || Rails.env.development?
 end
 ```
@@ -82,4 +82,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
