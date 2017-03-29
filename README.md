@@ -1,8 +1,9 @@
 # IsItWorking
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/is_it_working`. To experiment with that code, run `bin/console` for an interactive prompt.
+https://IsItWorking.info provides a simple way for your code to check in and confirm that it is running!
+This gem provides a simple wrapper for checking in, and timing code.
 
-TODO: Delete this and the text above, and describe your gem
+It's perfect for making sure that background tasks are running correctly, and for checking that they're not taking too long as your app grows.
 
 ## Installation
 
