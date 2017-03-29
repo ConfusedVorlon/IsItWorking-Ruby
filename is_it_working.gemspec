@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'is_it_working/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "is_it_working"
+  spec.name          = "is_it_working_info"
   spec.version       = IsItWorking::VERSION
   spec.authors       = ["Rob Jonson"]
   spec.email         = ["rob@hobbyistsoftware.com"]
