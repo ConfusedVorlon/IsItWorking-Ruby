@@ -1,6 +1,7 @@
 # IsItWorking
 
 https://IsItWorking.info provides a simple way for your code to check in and confirm that it is running!
+
 This gem provides a simple wrapper for checking in, and timing code.
 
 It's perfect for making sure that background tasks are running correctly, and for checking that they're not taking too long as your app grows.
@@ -21,9 +22,10 @@ Or install it yourself as:
 
     $ gem install is_it_working_info
 
-## Create a Checkin at Is It Working
+## Create a Checkin at IsItWorking.info
 
-Log in to Is It Working and create a 'Checkin'.
+Log in to Is https://IsItWorking.info and create a 'Checkin'.
+
 Click on the 'Use' button to get your CHECKIN_IDENTIFIER
 
 ## Usage
@@ -55,13 +57,17 @@ See the full api details at https://isitworking.info/docs/checkin_api
 
 ## Configuration
 
-you can disable http calls with
+You probably don't want your test/development code to be checking in.
+
+You can disable the actual checkins with:
 
 ```ruby
 IsItWorkingInfo.configure do |config|
 	config.testing = true
 end
 ```
+
+If testing is true, then IsItWorkingInfo will `put` the url that it would have called, but won't actually do the checkin.
 
 in Rails, you can disable for testing and development by adding an initialiser 
 
