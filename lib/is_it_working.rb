@@ -1,14 +1,15 @@
 require "is_it_working/version"
+require 'benchmark'
 
 module IsItWorking
 
 	##
 	# This class provides a wrapper for checking in with https://IsItWorking.info
 	class Checkin
+		attr_accessor :uri
+		attr_accessor :params
+		attr_accessor :response
 
-		def self.uri(key:)
-			uri = URI("http://api.isitworking.info/c/#{key}")
-		end
 
 		#checkin with IsItWorking
 		def self.ping(key:nil,message:nil,status:nil,time:nil, boundary:nil)
@@ -16,18 +17,27 @@ module IsItWorking
 				raise 'You must specify a key' 
 			end
 
-			uri = self.uri(key:key)
-			if uri.nil?
+			checkin=Checkin.new
+			checkin.uri = URI("https://api.isitworking.info/c/#{key}")
+
+			if checkin.nil?
 				raise 'Unable to generate uri - please check your key' 
 			end
 
-			params = {
+			checkin.params = {
 			t: time,
 			b: boundary,
 			m: message,
 			s: status
 			}
-			res = Net::HTTP.post_form(uri,params)
+
+			if IsItWorking.configuration.testing
+				puts "IsItWorking testing. Would call: #{checkin.uri.to_s}"
+			else
+				checkin.result = Net::HTTP.post_form(checkin.uri,checkin.params)
+			end
+
+			checkin
 		end
 
 		#times the block, in milliseconds and sends the result to IsItWorking
@@ -40,6 +50,25 @@ module IsItWorking
 			self.ping(key: key, message: message, status: status, time: milliseconds, boundary: boundary)
 		end
 
+	end
+
+	#config described by
+	#https://robots.thoughtbot.com/mygem-configure-block
+	class << self
+		attr_accessor :configuration
+	end
+
+	def self.configure
+		self.configuration ||= Configuration.new
+		yield(configuration)
+	end
+
+	class Configuration
+		attr_accessor :testing
+
+		def initialize
+			@testing = false
+		end
 	end
 
 end
