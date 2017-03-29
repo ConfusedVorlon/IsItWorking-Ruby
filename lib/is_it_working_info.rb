@@ -9,6 +9,7 @@ module IsItWorkingInfo
 		attr_accessor :uri
 		attr_accessor :params
 		attr_accessor :response
+		attr_accessor :result
 
 
 		#checkin with IsItWorking
